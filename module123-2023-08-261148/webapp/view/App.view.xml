@@ -1,0 +1,73 @@
+<mvc:View controllerName="com.app.module123.controller.App"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m" xmlns:t="sap.ui.table" xmlns:core="sap.ui.core">
+    <App id="app">
+    <Page title="{i18n>title}">
+        <content>
+          <Panel>
+           <t:Table
+                    rows="{myLocalModel>/aProductsData}"
+                    selectionMode="None"
+                    visibleRowCount="12"
+                    enableColumnReordering="true">
+                    <t:extension>
+                        <OverflowToolbar style="Clear">
+                            <Title text="Products List"></Title>
+                            <Select
+                                forceSelection="false"
+                                selectedKey="{myLocalModel>/sSelectedName}"
+                                items="{
+                                    path: 'myLocalModel>/aProductsList'
+                                }">
+                                <core:Item key="{myLocalModel>Name}" text="{myLocalModel>Name}" />
+                            </Select>
+                            <Select
+                                forceSelection="false"
+                                selectedKey="{myLocalModel>/sSelectedRating}"
+                                items="{
+                                    path: 'myLocalModel>/aProductsList'
+                                }">
+                                <core:Item key="{myLocalModel>Rating}" text="{myLocalModel>Rating}" />
+                            </Select>
+                            <ToolbarSpacer />
+                            <Button text="Display Data" press="fnLoadTabeData"></Button>
+                        </OverflowToolbar>
+                    </t:extension>
+                    <t:columns>
+                        <t:Column width="6rem">
+                            <Label text="ID" />
+                            <t:template>
+                                <Input value="{myLocalModel>ID}"/>
+                            </t:template>
+                        </t:Column>
+                         <t:Column width="12rem">
+                            <Label text="Name" />
+                            <t:template>
+                                <Text text="{myLocalModel>Name}"/>
+                            </t:template>
+                        </t:Column>
+                         <t:Column width="20rem">
+                            <Label text="Description" />
+                            <t:template>
+                                <Label text="{myLocalModel>Description}" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="20rem"  hAlign="End">
+                            <Label text="Rating" />
+                            <t:template>
+                                <Text text="{myLocalModel>Rating}" />
+                            </t:template>
+                        </t:Column>
+                         <t:Column width="10rem">
+                            <Label text="Price" />
+                            <t:template>
+                                <Input value="{myLocalModel>Price}" />
+                            </t:template>
+                        </t:Column>
+                    </t:columns>
+                </t:Table>
+                </Panel>
+        </content>
+    </Page>
+    </App>
+</mvc:View>
